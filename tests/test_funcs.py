@@ -1,7 +1,7 @@
 import pytest, os
 from ..config.funcs import get_json_file
 
-path_ = os.path.join('..', 'config', 'products.json')
+path_ = os.path.join('config', 'products.json')
 
 
 def test_get_json_file():
