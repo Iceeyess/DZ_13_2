@@ -11,8 +11,16 @@ class Category:
         Category.total_unique_product += len(goods)
 
     @property
-    def goods(self) -> str:
-        result = ''
-        for product in self.__goods:
-            result += f"{product.name}, {product.price} руб. Остаток: {product.remaining_quantity} шт.\n"
-        return result
+    def goods(self) -> list:
+        return self.__goods
+
+    def __str__(self):
+        """Строковое представление"""
+        return f"{self.name}, количество продуктов: {self.__len__()} шт."
+
+
+    def __len__(self):
+        total_count_goods = 0
+        for item in self.goods:
+            total_count_goods += len(item)
+        return total_count_goods
