@@ -6,7 +6,7 @@
       {
         "name": "Samsung Galaxy C23 Ultra",
         "description": "256GB, Серый цвет, 200MP камера",
-        "price": -100,
+        "price": 23000.00,
         "quantity": 5
       },
       {
@@ -17,28 +17,28 @@
       },{
         "name": "Iphone 15",
         "description": "512GB, Gray space",
-        "price": 110000.0,
+        "price": 210400.0,
         "quantity": 3
       },
       {
         "name": "Samsung Galaxy C23 Ultra",
         "description": "256GB, Серый цвет, 200MP камера",
-        "price": 110000.0,
+        "price": 12000.0,
         "quantity": 3
       },{
         "name": "Samsung Galaxy C23 Ultra",
         "description": "256GB, Серый цвет, 200MP камера",
-        "price": -200,
+        "price": 42000,
         "quantity": 4
       },{
         "name": "Samsung Galaxy C23 Ultra",
         "description": "256GB, Серый цвет, 200MP камера",
-        "price": 16000.0,
+        "price": 35000.0,
         "quantity": 5
       },{
         "name": "Samsung Galaxy C23 Ultra",
         "description": "256GB, Серый цвет, 200MP камера",
-        "price": 11000.0,
+        "price": 44000.0,
         "quantity": 6
       },
       {
