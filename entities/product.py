@@ -52,14 +52,15 @@ class Product:
         """Добавляет продукт в список и удаляет один элемент, если такой ранее уже был, чтобы избежать дублирования"""
         new_product = cls(name, description, price, quantity) # параметры
         new_list = lst # список
-        if new_list:
-            for prod in new_list[::-1]: # ведем поиск с конца, как только нашли - стоп итерация
-                if new_product.name == prod.name:
-                    new_product.remaining_quantity += prod.remaining_quantity
-                    new_product.price = (new_product.price, prod.price)
-                    new_list.remove(prod) # стираем предыдущий ЭК из-за ненадобности (дубляжа)
-                    break
-        return new_product
+        if issubclass(new_product.__class__, Product):
+            if new_list:
+                for prod in new_list[::-1]: # ведем поиск с конца, как только нашли - стоп итерация
+                    if new_product.name == prod.name:
+                        new_product.remaining_quantity += prod.remaining_quantity
+                        new_product.price = (new_product.price, prod.price)
+                        new_list.remove(prod) # стираем предыдущий ЭК из-за ненадобности (дубляжа)
+                        break
+            return new_product
 
     def __str__(self) -> str:
         """Строковое отображение ЭК"""
@@ -72,7 +73,6 @@ class Product:
     def __add__(self, other):
         """Складывает два продукта и выводит общую цену за все товары в формате:
         цена продукта х количество ЭК + цена продукта х количество другого ЭК"""
-        if isinstance(other, Product):
+        if isinstance(other, self.__class__):
             return (self.price * self.remaining_quantity) + (other.price * other.remaining_quantity)
-        else:
-            raise print(f"Можно складывать только ЭК Product между собой")
+        raise TypeError(f"Можно складывать только ЭК Product и их дочерные ЭК между собой")
