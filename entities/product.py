@@ -1,10 +1,14 @@
-class Product:
+from abc import ABC, abstractmethod
+
+
+class Product(ABC):
     """Класс для характеристик и действий над свойствами товаров"""
-    def __init__(self, name: str, description: str, price: float, quantity: int) -> None:
+    def __init__(self, name: str, description: str, price: float, quantity: int, color: str) -> None:
         self.name = name
         self.description = description
         self.__price = price
         self.remaining_quantity = quantity
+        self.color = color
 
     @property
     def price(self) -> float:
@@ -48,11 +52,10 @@ class Product:
                 print(f"Введена новая цена автоматически {self.__price}")
 
     @classmethod
-    def add_product(cls, name: str, description: str, price: float, quantity: int, lst: list):
+    def add_product(cls, lst, args):
         """Добавляет продукт в список и удаляет один элемент, если такой ранее уже был, чтобы избежать дублирования"""
-        new_product = cls(name, description, price, quantity) # параметры
-        new_list = lst # список
-        if issubclass(new_product.__class__, Product):
+        new_product, new_list = cls(*args), lst
+        if isinstance(new_product, Product):
             if new_list:
                 for prod in new_list[::-1]: # ведем поиск с конца, как только нашли - стоп итерация
                     if new_product.name == prod.name:

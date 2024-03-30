@@ -4,60 +4,83 @@
     "description": "Смартфоны, как средство не только коммуникации, но и получение дополнительных функций для удобства жизни",
     "products": [
       {
-        "name": "Samsung Galaxy C23 Ultra",
+        "name": "Samsung Galaxy",
         "description": "256GB, Серый цвет, 200MP камера",
         "price": 23000.00,
-        "quantity": 5
-      },
-      {
+        "quantity": 5,
+        "color": "Зеленый",
+        "efficiency": 48,
+        "model": " C23 Ultra",
+        "volume_storage": 5000
+      },{
         "name": "Iphone 15",
         "description": "512GB, Gray space",
         "price": 210000.0,
-        "quantity": 8
+        "quantity": 8,
+        "color": "Красный",
+        "efficiency": 36,
+        "model": " 15",
+        "volume_storage": 5600
       },{
         "name": "Iphone 15",
         "description": "512GB, Gray space",
-        "price": 210400.0,
-        "quantity": 3
-      },
-      {
-        "name": "Samsung Galaxy C23 Ultra",
+        "price": 315000.0,
+        "quantity": 3,
+        "color": "Черный",
+        "efficiency": 72,
+        "model": " 15",
+        "volume_storage": 7000
+      },{
+        "name": "Samsung Galaxy",
         "description": "256GB, Серый цвет, 200MP камера",
         "price": 12000.0,
-        "quantity": 3
-      },{
-        "name": "Samsung Galaxy C23 Ultra",
-        "description": "256GB, Серый цвет, 200MP камера",
-        "price": 42000,
-        "quantity": 4
-      },{
-        "name": "Samsung Galaxy C23 Ultra",
-        "description": "256GB, Серый цвет, 200MP камера",
-        "price": 35000.0,
-        "quantity": 5
-      },{
-        "name": "Samsung Galaxy C23 Ultra",
-        "description": "256GB, Серый цвет, 200MP камера",
-        "price": 44000.0,
-        "quantity": 6
+        "quantity": 3,
+        "color": "Белый",
+        "efficiency": 36,
+        "model": "C23 Ultra",
+        "volume_storage": 7000
       },
       {
-        "name": "Xiaomi Redmi Note 11",
+        "name": "Xiaomi",
         "description": "1024GB, Синий",
         "price": 31000.0,
-        "quantity": 14
+        "quantity": 14,
+        "color": "Желтый",
+        "efficiency": 72,
+        "model": "Redmi Note 11",
+        "volume_storage": 7100
+      },{
+        "name": "Samsung Galaxy ",
+        "description": "6.5\" (2340×1080) Super AMOLED 90 Гц 6/128 ГБ, Dual nano SIM, черный",
+        "price": 19000.0,
+        "quantity": 10,
+        "color": "Черный",
+        "efficiency": 56,
+        "model": "A24",
+        "volume_storage": 7100
       }
     ]
-  },
-  {
-    "name": "Телевизоры",
-    "description": "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником",
+  },{
+    "name": "Газонная трава",
+    "description": "Самый лучший газон! По нему коровки ходили.",
     "products": [
       {
-        "name": "55\" QLED 4K",
-        "description": "Фоновая подсветка",
-        "price": 123000.0,
-        "quantity": 7
+        "name": "Искусственный рулонный газон ",
+        "description": "Искусственный газон с гладким ворсом предназначен для имитации натурального газона. Он широко применяется в спортивных залах, на детских площадках, в кукольных домиках, зонах для домашних собак, в детских садах, на крышах, балконах, бассейнах, в саду и патио.",
+        "price": 898.0,
+        "quantity": 50,
+        "country_of_origin": "Россия",
+        "germination_period": 50,
+        "color": "Зеленый"
+      },
+      {
+        "name": "Газонная трава",
+        "description": "Травосмесь \"Экологичная\" отлично обеспечит полное выздоровление почвы. Семена, находящиеся в составе, обеспечивают уничтожение эрозии. Семена газона состоят из разнообразия неприхотливых растений, а также могут применяться для корма животных.\nПакета данного набора травосмеси в 5 кг хватает для засеивания - 100 кв. м.",
+        "price": 1046.0,
+        "quantity": 5,
+        "country_of_origin": "Россия",
+        "germination_period": 40,
+        "color": "Темно-зеленый"
       }
     ]
   }
