@@ -1,7 +1,7 @@
-from abc import ABC, abstractmethod
+from entities.mixin import TemplateForProduct
 
 
-class Product(ABC):
+class Product(TemplateForProduct):
     """Класс для характеристик и действий над свойствами товаров"""
     def __init__(self, name: str, description: str, price: float, quantity: int, color: str) -> None:
         self.name = name
