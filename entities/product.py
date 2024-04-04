@@ -1,8 +1,20 @@
 from entities.mixin import TemplateForProduct
 
 
+class ProductException(Exception):
+    """Базовый класс для искключений класса продукта"""
+
+    def __str__(self) -> None:
+        return f"Товар с нулевым количеством не может быть добавлен"
+
+
+class ZeroRemainingQuantityException(ProductException):
+    """Класс исключений для товара с нулевым количеством"""
+
+
 class Product(TemplateForProduct):
     """Класс для характеристик и действий над свойствами товаров"""
+
     def __init__(self, name: str, description: str, price: float, quantity: int, color: str) -> None:
         self.name = name
         self.description = description
@@ -26,14 +38,15 @@ class Product(TemplateForProduct):
                 self.__price = user_answer
                 print(f"Введена новая цена вручную {self.__price}")
             elif user_answer < old_price:
-                print(f'{user_answer} Цена меньше ранее заявленной. Подтвердите, что хотите\n её ввести через "y" или опровергните через "n":\n')
+                print(
+                    f'{user_answer} Цена меньше ранее заявленной. Подтвердите, что хотите\n её ввести через "y" или опровергните через "n":\n')
                 user_answer_2 = input().lower()
                 if user_answer_2 == 'y':
                     self.__price = user_answer
                     print(f"Введена новая цена вручную {self.__price}")
                 else:
                     self.__price = old_price
-                    print(f"Старая цена осталась {self.__price }")
+                    print(f"Старая цена осталась {self.__price}")
             else:
                 self.__price = new_price
                 print(f"Введена новая цена автоматически {self.__price}")
@@ -56,12 +69,14 @@ class Product(TemplateForProduct):
         """Добавляет продукт в список и удаляет один элемент, если такой ранее уже был, чтобы избежать дублирования"""
         new_product, new_list = cls(*args), lst
         if isinstance(new_product, Product):
-            if new_list:
-                for prod in new_list[::-1]: # ведем поиск с конца, как только нашли - стоп итерация
+            if not new_product.remaining_quantity:
+                raise ZeroRemainingQuantityException
+            elif new_list:
+                for prod in new_list[::-1]:  # ведем поиск с конца, как только нашли - стоп итерация
                     if new_product.name == prod.name:
                         new_product.remaining_quantity += prod.remaining_quantity
                         new_product.price = (new_product.price, prod.price)
-                        new_list.remove(prod) # стираем предыдущий ЭК из-за ненадобности (дубляжа)
+                        new_list.remove(prod)  # стираем предыдущий ЭК из-за ненадобности (дубляжа)
                         break
             return new_product
 
@@ -78,4 +93,7 @@ class Product(TemplateForProduct):
         цена продукта х количество ЭК + цена продукта х количество другого ЭК"""
         if isinstance(other, self.__class__):
             return (self.price * self.remaining_quantity) + (other.price * other.remaining_quantity)
+        elif isinstance(other, (int, float)):
+            return other + self.price * self.remaining_quantity
         raise TypeError(f"Можно складывать только ЭК Product и их дочерные ЭК между собой")
+

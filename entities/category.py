@@ -24,3 +24,17 @@ class Category:
         for item in self.goods:
             total_count_goods += len(item)
         return total_count_goods
+
+    def avg_amount(self):
+        """Метод для расчета средней стоимости товара"""
+        try:
+            sum_amount, sum_quantity = 0, 0
+            for _ in self.goods:
+                sum_amount = (_ + sum_amount)
+                sum_quantity += len(_)
+            return round(sum_amount / sum_quantity, 2)
+        except ZeroDivisionError:
+            return 0
+        #     return round(reduce(lambda a, b: a + b, self.goods) / len(self), 2)
+        # except ZeroDivisionError:
+        #     return 0
