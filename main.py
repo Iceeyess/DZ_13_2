@@ -5,29 +5,37 @@ from entities.instance_iteration import InstanceIterator
 import os
 from entities.smartphone import Smartphone
 from entities.lawn_grass import LawnGrass
+from source.dictionary import prod_key_grass, prod_key_phone
 
 path_ = os.path.join('source/products.json')
 json_file = get_json_file(path_)
-product_instance_list = []
-prod_key_phone = {
-    "name": "Samsung Galaxy",
-    "description": "256GB, Серый цвет, 200MP камера",
-    "price": 23000.00,
-    "quantity": 5,
-    "color": "Зеленый",
-    "efficiency": 48,
-    "model": " C23 Ultra",
-    "volume_storage": 5000
-}
-prod_key_grass = {"name": "Газонная трава",
-                  "description": "Травосмесь \"Экологичная\" отлично обеспечит полное выздоровление почвы. Семена, находящиеся в составе, обеспечивают уничтожение эрозии. Семена газона состоят из разнообразия неприхотливых растений, а также могут применяться для корма животных.\nПакета данного набора травосмеси в 5 кг хватает для засеивания - 100 кв. м.",
-                  "price": 1046.0,
-                  "quantity": 5,
-                  "color": "Темно-зеленый",
-                  "country_of_origin": "Россия",
-                  "germination_period": 40
-                  }
 
-print(repr(Smartphone.add_product([], prod_key_phone.values())))
-print(repr(LawnGrass.add_product([], prod_key_grass.values())))
+category_phone = ["Телефон", "Чудесный телефон"]
+category_grass = ["Трава", "Не маривана, хароЩий трава"]
+
+
+
+# Создаем категорию смартфонов для ДЗ 16_1. JSON сложный, чтобы под него корректировать условия, поэтому без него.
+# Очень не люблю , когда много условий,путает очень.
+lst = []
+for d in prod_key_phone:
+    lst.append(Smartphone.add_product(lst, d.values()))
+c_1 = Category(category_phone[0], category_phone[1], lst)
+c_0 = Category(category_phone[0], category_phone[1], []) # случай без списка
+print('Смартфоны с двумя смартфонами', c_1.avg_amount())
+# ДЗ 16_1 Задание №2
+print('Смартфоны с нулевым списком', c_0.avg_amount())
+
+# Список для травы
+lst_2 = []
+for d in prod_key_grass:
+    lst_2.append(LawnGrass.add_product(lst_2, d.values()))
+g_1 = Category(category_grass[0], category_grass[1], lst_2)
+g_0 = Category(category_grass[0], category_grass[1], []) # случай без списка
+print('Травка', g_1.avg_amount())
+# ДЗ 16_1 Задание №2
+print('Как же плохо без травы', g_0.avg_amount())
+
+
+
 
