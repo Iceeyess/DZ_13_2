@@ -2,14 +2,13 @@ from entities.mixin import TemplateForProduct
 
 
 class ProductException(Exception):
-    """Базовый класс для искключений класса продукта"""
-
-    def __str__(self) -> None:
-        return f"Товар с нулевым количеством не может быть добавлен"
+    """Базовый класс для исключений класса продукта"""
 
 
 class ZeroRemainingQuantityException(ProductException):
     """Класс исключений для товара с нулевым количеством"""
+    def __str__(self) -> None:
+        return f"Товар с нулевым количеством не может быть добавлен"
 
 
 class Product(TemplateForProduct):
