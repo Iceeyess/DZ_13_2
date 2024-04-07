@@ -1,3 +1,4 @@
+from product import ZeroRemainingQuantityException
 class Category:
     """Класс для характеристики и действий над категориями товаров"""
     total_category_count = 0
@@ -35,6 +36,9 @@ class Category:
             return round(sum_amount / sum_quantity, 2)
         except ZeroDivisionError:
             return 0
-        #     return round(reduce(lambda a, b: a + b, self.goods) / len(self), 2)
-        # except ZeroDivisionError:
-        #     return 0
+
+    def add_product(self, goods_obj):
+        if not goods_obj.remaining_quantity:
+            raise ZeroRemainingQuantityException
+        self.__goods += [goods_obj]
+
