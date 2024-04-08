@@ -38,7 +38,7 @@ class Category:
             return 0
 
     def add_product(self, goods_obj):
-        if not goods_obj.remaining_quantity:
+        if goods_obj.remaining_quantity == 0:
             raise ZeroRemainingQuantityException
         self.__goods += [goods_obj]
 
