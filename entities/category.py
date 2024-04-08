@@ -1,4 +1,5 @@
 from product import ZeroRemainingQuantityException
+from product import Product
 class Category:
     """Класс для характеристики и действий над категориями товаров"""
     total_category_count = 0
@@ -38,7 +39,9 @@ class Category:
             return 0
 
     def add_product(self, goods_obj):
-        if goods_obj.remaining_quantity == 0:
-            raise ZeroRemainingQuantityException
-        self.__goods += [goods_obj]
+        if isinstance(goods_obj, Product):
+            if goods_obj.remaining_quantity == 0:
+                raise ZeroRemainingQuantityException
+            self.__goods += [goods_obj]
+        raise TypeError
 
